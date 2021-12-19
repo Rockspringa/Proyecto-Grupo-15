@@ -43,6 +43,15 @@ if (btn) {
     ]);
 }
 
+// funcion para la pagina de registro
+let btn = document.getElementById("ingresar-btn");
+if (btn) {
+    console.log([
+        "La secretaria debe de estar identificada.",
+        "El usuario no debe de existir.",
+    ]);
+}
+
 // funcion para la pagina de login
 // btn = document.getElementById("login-btn");
 // if (btn) {
@@ -52,5 +61,3 @@ if (btn) {
 //         "No debe de estar ningun usuario identificado en el dispositivo desde el cual ingresa",
 //     ]);
 // }
-
-
