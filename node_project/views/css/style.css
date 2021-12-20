@@ -19,6 +19,10 @@ hr {
 hr.mitad {
   width: 40%;
 }
+.double-col hr.mitad {
+  width: 60%;
+  grid-column-end: span 2;
+}
 
 .card {
   margin: 15px auto;
@@ -85,6 +89,10 @@ div.center-child {
 @media (max-width: 767px) {
   .double-col {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .double-col hr.mitad {
+    width: 40%;
+    grid-column-end: span 1;
   }
 
   .s-none {

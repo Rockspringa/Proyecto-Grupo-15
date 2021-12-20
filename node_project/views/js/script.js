@@ -117,11 +117,9 @@ if (addBtn) {
     });
 
     const hrElement = document.createElement("hr");
-    const hrElementSNone = document.createElement("hr");
     let noExamen = 2;
 
     hrElement.classList.add("mitad");
-    hrElementSNone.classList.add("mitad", "s-none");
 
     addBtn.addEventListener("click", () => {
         let newExam = document.createElement("div");
@@ -161,10 +159,6 @@ if (addBtn) {
         last.parentElement.insertBefore(newExam, last.nextElementSibling);
         last.parentElement.insertBefore(
             hrElement.cloneNode(),
-            last.nextElementSibling
-        );
-        last.parentElement.insertBefore(
-            hrElementSNone.cloneNode(),
             last.nextElementSibling
         );
         noExamen++;
