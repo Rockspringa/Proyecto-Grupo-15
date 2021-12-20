@@ -148,15 +148,15 @@ if (addBtn) {
         newPrice.id = "last";
         newPrice.classList.add("col", "fill");
         newPrice.innerHTML = `
-            <p class="bg-lightgray pill">
+            <p class="bg-purple pill">
                 Fecha de entrega:
                 <span id="entrega-examen-${noExamen}">21/12/2021 12:00</span>
             </p>
-            <p class="bg-lightgray pill">
+            <p class="bg-purple pill">
                 Codigo de muestra:
                 <span id="codigo-examen-1">Q7F3CO0</span>
             </p>
-            <p class="bg-lightgray pill">
+            <p class="bg-purple pill">
                 Precio:
                 <span id="precio-examen-${noExamen}">Q0.00</span>
             </p>
