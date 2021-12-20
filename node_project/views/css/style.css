@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto+Slab&display=swap");
 body {
-  font-family: "JetBrains Mono", sans-serif;
-  background-color: #76dbe4;
   min-width: fit-content;
   min-height: fit-content;
+  font-family: "JetBrains Mono", sans-serif;
+  background: #d4effc;
 }
 
 input, select, option {
@@ -14,7 +14,7 @@ input, select, option {
 hr {
   width: 80%;
   height: 0;
-  border: 1px solid #76dbe4;
+  border: 1px solid #104080;
 }
 hr.mitad {
   width: 40%;
@@ -23,7 +23,8 @@ hr.mitad {
 .card {
   margin: 15px auto;
   height: fit-content;
-  background: #104080;
+  border: 2px solid #104080;
+  background: white;
   border-radius: 20px;
 }
 
@@ -51,7 +52,7 @@ hr.mitad {
 }
 
 .text-celeste {
-  color: #76dbe4;
+  color: #104080;
 }
 
 .bg-lightgray {
@@ -82,12 +83,20 @@ div.center-child {
   grid-template-columns: repeat(2, 1fr);
 }
 @media (max-width: 767px) {
+  body {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(212,239,252,1) 85%);
+  }
+
   .double-col {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .s-none {
     display: none;
+  }
+
+  .card {
+    border: 0;
   }
 }
 
@@ -122,7 +131,7 @@ div.center-child {
   border: 0;
   display: block;
   font-size: 14px;
-  background: #76dbe4;
+  background: #104080;
   font-weight: bold;
   font-family: "JetBrains Mono", sans-serif;
   border-radius: 20px;
@@ -132,29 +141,30 @@ div.center-child {
   text-decoration: underline;
 }
 .col .btn.primary-btn, .double-col .btn.primary-btn {
-  color: #104080;
+  color: white;
   padding: 10px 20px;
 }
 .col .btn.primary-btn:active, .double-col .btn.primary-btn:active {
-  color: white;
-  border: 2px solid #76dbe4;
+  color: #104080;
+  border: 2px solid white;
   padding: 8px 18px;
-  background: #104080;
+  background: #afe1fa;
 }
 .col .btn.primary-btn:hover:not(:active), .double-col .btn.primary-btn:hover:not(:active) {
-  background: white;
+  color: white;
+  background: #afe1fa;
 }
 .col .btn.secondary-btn, .double-col .btn.secondary-btn {
-  color: #76dbe4;
+  color: #104080;
   padding: 5px 15px;
-  background: #104080;
+  background: white;
 }
 .col .btn.secondary-btn:active, .double-col .btn.secondary-btn:active {
   color: #104080;
   background: white;
 }
 .col .btn.secondary-btn:hover:not(:active), .double-col .btn.secondary-btn:hover:not(:active) {
-  color: white;
+  color: #afe1fa;
 }
 .col > .cell, .double-col > .cell {
   width: 100%;
@@ -166,7 +176,7 @@ div.center-child {
   top: -5;
   position: relative;
 }
-.double-col > .cell > label {
+.cell > label {
   left: 10%;
   height: 100%;
   display: flex;
@@ -182,12 +192,12 @@ div.center-child {
 }
 .cell label {
   top: -40%;
-  color: white;
+  color: #104080;
 }
 .col > .cell > input, .double-col > .cell > input,
 .col > .cell > select, .double-col > .cell > select {
   width: 100%;
-  border: 0;
+  border: 2px solid #104080;
   height: 100%;
   padding: 0 2em;
   border-radius: 20px;

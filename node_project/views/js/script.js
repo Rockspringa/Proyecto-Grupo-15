@@ -1,5 +1,5 @@
 const rojoPalido = "#dc7c7c";
-const white = "#ffffff";
+const blue = "#104080";
 
 function doShake(input, label) {
     if (!input.value) {
@@ -20,7 +20,7 @@ document.querySelectorAll(".col .cell, .double-col .cell").forEach((row) => {
     input.addEventListener("blur", () => {
         if (input.value) {
             if (label.classList.contains("required")) {
-                label.style.color = white;
+                label.style.color = blue;
 
                 input.classList.remove("rotate");
             }
@@ -153,7 +153,7 @@ if (addBtn) {
                 <span id="entrega-examen-${noExamen}">21/12/2021 12:00</span>
             </p>
             <p class="bg-lightgray pill">
-                Codigo:
+                Codigo de muestra:
                 <span id="codigo-examen-1">Q7F3CO0</span>
             </p>
             <p class="bg-lightgray pill">
