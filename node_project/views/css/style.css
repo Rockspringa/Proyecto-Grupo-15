@@ -162,11 +162,11 @@ div.center-child {
   position: relative;
   margin: 10% 0 4%;
 }
-.col > .cell .btn, .double-col > .cell .btn {
+.cell .btn, .cell .btn {
   top: -5;
   position: relative;
 }
-.col > .cell > label, .col > .cell > .animated-up, .double-col > .cell > label, .col > .cell > .animated-up {
+.double-col > .cell > label {
   left: 10%;
   height: 100%;
   display: flex;
@@ -174,19 +174,15 @@ div.center-child {
   transform: translateY(-50%);
   align-items: center;
 }
-.col > .cell > label.required::after, .col > .cell > .animated-up.required::after, .double-col > .cell > label.required::after, .col > .cell > .animated-up.required::after {
+.cell > label.required::after {
   left: 10px;
   color: red;
   content: "*";
   position: relative;
 }
-.col > .cell > label:not(.animated-up), .double-col > .cell > label:not(.animated-up) {
+.cell label {
   top: -40%;
   color: white;
-}
-.col > .cell > .animated-up, .double-col > .cell > .animated-up {
-  top: 50%;
-  color: dimgray;
 }
 .col > .cell > input, .double-col > .cell > input,
 .col > .cell > select, .double-col > .cell > select {
@@ -203,12 +199,6 @@ div.center-child {
 .col > .cell > input:focus, .double-col > .cell > input:focus,
 .col > .cell > select:focus, .double-col > .cell > select:focus {
   background: lightgray;
-}
-.col > .cell > input:not(.btn):focus + .animated-up, .double-col > .cell > input:not(.btn):focus + .animated-up {
-  top: -50%;
-  color: white;
-  border: 0;
-  animation: move-label 0.35s ease-in-out;
 }
 
 input.rotate:not(:focus) {
@@ -227,15 +217,5 @@ input.rotate:not(:focus) {
   }
   100% {
     transform: rotate(0deg);
-  }
-}
-@keyframes move-label {
-  from {
-    color: dimgray;
-    top: 50%;
-  }
-  to {
-    color: white;
-    top: -50%;
   }
 }
