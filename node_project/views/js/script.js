@@ -116,12 +116,6 @@ if (addBtn) {
         });
     });
 
-    console.log([
-        "La secretaria debe de estar autentificada.",
-        "El usuario debe de existir.",
-        "El usuario debe de llevar las muestras",
-    ]);
-
     const hrElement = document.createElement("hr");
     const hrElementSNone = document.createElement("hr");
     let noExamen = 2;
