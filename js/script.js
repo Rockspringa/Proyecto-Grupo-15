@@ -116,18 +116,10 @@ if (addBtn) {
         });
     });
 
-    console.log([
-        "La secretaria debe de estar autentificada.",
-        "El usuario debe de existir.",
-        "El usuario debe de llevar las muestras",
-    ]);
-
     const hrElement = document.createElement("hr");
-    const hrElementSNone = document.createElement("hr");
     let noExamen = 2;
 
     hrElement.classList.add("mitad");
-    hrElementSNone.classList.add("mitad", "s-none");
 
     addBtn.addEventListener("click", () => {
         let newExam = document.createElement("div");
@@ -167,10 +159,6 @@ if (addBtn) {
         last.parentElement.insertBefore(newExam, last.nextElementSibling);
         last.parentElement.insertBefore(
             hrElement.cloneNode(),
-            last.nextElementSibling
-        );
-        last.parentElement.insertBefore(
-            hrElementSNone.cloneNode(),
             last.nextElementSibling
         );
         noExamen++;
