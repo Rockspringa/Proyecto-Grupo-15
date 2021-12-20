@@ -4,7 +4,7 @@ body {
   min-width: fit-content;
   min-height: fit-content;
   font-family: "JetBrains Mono", sans-serif;
-  background: #d4effc;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(212,239,252,1) 85%);
 }
 
 input, select, option {
@@ -83,10 +83,6 @@ div.center-child {
   grid-template-columns: repeat(2, 1fr);
 }
 @media (max-width: 767px) {
-  body {
-    background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(212,239,252,1) 85%);
-  }
-
   .double-col {
     grid-template-columns: repeat(1, 1fr);
   }
