@@ -85,6 +85,10 @@ div.center-child {
   .double-col {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .s-none {
+    display: none;
+  }
 }
 
 .col {

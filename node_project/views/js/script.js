@@ -65,6 +65,12 @@ if (btn) {
 }
 
 // funcion para la pagina de registro
+btn = document.getElementById("descargar-reportes-btn");
+if (btn) {
+    console.log(["El administrador debe de estar identificado."]);
+}
+
+// funcion para la pagina de registro
 btn = document.getElementById("ingresar-paciente-btn");
 if (btn) {
     console.log([
@@ -104,6 +110,7 @@ if (addBtn) {
     document.getElementById("cui").addEventListener("change", () => {
         // verificar existencia del CUI
         document.querySelectorAll(".deshidden").forEach((element) => {
+            element.classList.remove("s-none");
             element.classList.remove("hidden");
             element.classList.remove("deshidden");
         });
@@ -116,9 +123,11 @@ if (addBtn) {
     ]);
 
     const hrElement = document.createElement("hr");
+    const hrElementSNone = document.createElement("hr");
     let noExamen = 2;
 
     hrElement.classList.add("mitad");
+    hrElementSNone.classList.add("mitad", "s-none");
 
     addBtn.addEventListener("click", () => {
         let newExam = document.createElement("div");
@@ -140,16 +149,16 @@ if (addBtn) {
         newPrice.classList.add("col", "fill");
         newPrice.innerHTML = `
             <p class="bg-lightgray pill">
+                Fecha de entrega:
+                <span id="entrega-examen-${noExamen}">21/12/2021 12:00</span>
+            </p>
+            <p class="bg-lightgray pill">
                 Codigo:
                 <span id="codigo-examen-1">Q7F3CO0</span>
             </p>
             <p class="bg-lightgray pill">
                 Precio:
                 <span id="precio-examen-${noExamen}">Q0.00</span>
-            </p>
-            <p class="bg-lightgray pill">
-                Fecha de entrega:
-                <span id="entrega-examen-${noExamen}">21/12/2021 12:00</span>
             </p>
         `;
 
@@ -161,7 +170,7 @@ if (addBtn) {
             last.nextElementSibling
         );
         last.parentElement.insertBefore(
-            hrElement.cloneNode(),
+            hrElementSNone.cloneNode(),
             last.nextElementSibling
         );
         noExamen++;

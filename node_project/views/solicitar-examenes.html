@@ -22,11 +22,11 @@
                         <label for="cui" class="required">CUI del paciente</label>
                     </div>
 
-                    <div class="cell hidden deshidden">
+                    <div class="cell hidden deshidden s-none">
                         <a id="registrar" class="btn primary-btn">Registrar</a>
                     </div>
 
-                    <hr class="mitad">
+                    <hr class="mitad s-none">
                     <hr class="mitad hidden deshidden">
 
                     <div class="cell">
@@ -41,24 +41,24 @@
 
                     <div id="last" class="col fill">
                         <p class="bg-lightgray pill">
-                            Codigo:
+                            Fecha de entrega:
+                            <span id="entrega-examen-1">21/12/2021 12:00</span>
+                        </p>
+                        <p class="bg-lightgray pill">
+                            Codigo de muestra:
                             <span id="codigo-examen-1">Q7F3CO0</span>
                         </p>
                         <p class="bg-lightgray pill">
                             Precio:
                             <span id="precio-examen-1">Q0.00</span>
                         </p>
-                        <p class="bg-lightgray pill">
-                            Fecha de entrega:
-                            <span id="entrega-examen-1">21/12/2021 12:00</span>
-                        </p>
                     </div>
 
                     <hr class="mitad">
-                    <hr class="mitad">
+                    <hr class="mitad s-none">
 
-                    <hr class="mitad hidden">
-    
+                    <hr class="hidden s-none">
+
                     <div id="add-btn" class="cell">
                         <input type="button" class="btn primary-btn" value="Añadir otro examen">
                     </div>
@@ -66,8 +66,7 @@
 
                 <hr>
 
-                <input type="button" id="solicitar-btn" class="btn primary-btn print-cliente"
-                    value="Enviar Solicitud">
+                <input type="button" id="solicitar-btn" class="btn primary-btn print-cliente" value="Enviar Solicitud">
             </form>
         </div>
     </div>
