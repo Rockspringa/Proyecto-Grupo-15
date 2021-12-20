@@ -1,0 +1,43 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar resultados</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+    <div class="center-child">
+        <div class="card s-card">
+            <h1 class="title text-celeste">Ingresar resultados de examenes</h1>
+
+            <hr>
+
+            <form class="col">
+                <div class="col">
+                    <div class="cell">
+                        <input type="text" name="muestra" id="muestra" required>
+                        <label for="muestra" class="required">Codigo de muestra</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="button" value="Elegir archivo" id="redirect-resultado" class="btn file">
+                        <input type="file" name="resultado" id="resultado" class="hidden" required>
+                        <label for="resultado" class="required">Resultados</label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <input type="button" id="ingresar-resultado-btn" class="btn primary-btn print-cliente"
+                    value="Ingresar Resultados">
+            </form>
+        </div>
+    </div>
+
+    <script src="./../js/script.js"></script>
+</body>
+
+</html>

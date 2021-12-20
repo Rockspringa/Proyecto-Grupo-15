@@ -1,0 +1,76 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+    <div class="center-child">
+        <div class="card xl-card">
+            <h1 class="title text-celeste">Registrar Paciente</h1>
+
+            <hr>
+
+            <form class="col">
+                <div class="double-col">
+                    <div class="cell">
+                        <input type="text" name="nombre" id="nombre" required>
+                        <label for="nombre" class="required">Nombre</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="text" name="apellido" id="apellido" required>
+                        <label for="apellido" class="required">Apellido</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="number" name="cui" id="cui" required>
+                        <label for="cui" class="required">CUI</label>
+                    </div>
+
+                    <div class="cell">
+                        <select name="sexo" id="sexo" required>
+                            <option disabled selected>Escoja un sexo</option>
+                            <option value="true">Femenino</option>
+                            <option value="false">Masculino</option>
+                        </select>
+                        <label for="sexo" class="required">Sexo</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="text" name="fecha" id="fecha" required>
+                        <label for="fecha" class="required">Fecha de nacimiento</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="text" name="depto" id="depto">
+                        <label for="depto" class="">Departamento</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="checkbox" name="ref-bool" id="ref-bool">
+                        <label for="ref-bool">Referido</label>
+                    </div>
+
+                    <div class="cell">
+                        <input type="number" name="referido" id="referido" disabled>
+                        <label for="referido">Numero de colegiado</label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <input type="button" id="ingresar-paciente-btn" class="btn primary-btn print-cliente"
+                    value="Ingresar Cliente">
+            </form>
+        </div>
+    </div>
+
+    <script src="./../js/script.js"></script>
+</body>
+
+</html>

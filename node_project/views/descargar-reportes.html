@@ -1,0 +1,50 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Reportes del Negocio</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+    <div class="center-child">
+        <div class="card s-card">
+            <h1 class="title text-celeste">Descargar Reportes del Negocio</h1>
+
+            <hr>
+
+            <form class="col">
+                <div class="cell">
+                    <select name="reporte" id="reporte">
+                        <option value="" disabled selected>Escoja un reporte</option>
+                        <option value="dinero">Reporte de dinero recaudado</option>
+                        <option value="examenes">Reporte de examenes realizados</option>
+                        <option value="referidos">Reporte de referidos</option>
+                    </select>
+                    <label for="reporte" class="required">Tipo de reporte</label>
+                </div>
+
+                <div class="cell">
+                    <input type="date" name="inicio" id="inicio">
+                    <label for="inicio">Desde:</label>
+                </div>
+
+                <div class="cell">
+                    <input type="date" name="final" id="final">
+                    <label for="final">Hasta:</label>
+                </div>
+
+                <hr>
+
+                <input type="button" id="descargar-reportes-btn" class="btn primary-btn print-cliente"
+                    value="Descargar Reporte">
+            </form>
+        </div>
+    </div>
+
+    <script src="./../js/script.js"></script>
+</body>
+
+</html>
