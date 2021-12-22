@@ -1,20 +1,16 @@
 "use strict";
 
-// const Usuario = require("./model.js");
+// const Usuario = require("model");
 // const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const port = 8080;
-
-const dirBase = `${__dirname}/views`;
+const port = process.env.port || 8080;
 
 // app.use(bodyParser.urlencoded({ extended: false })); // aun no se hace uso de json
 // app.use(bodyParser.json());
 
-app.use(express.static(dirBase));
-app.use("./css", express.static(`${dirBase}/css`));
-app.use("./js", express.static(`${dirBase}/js`));
-
+app.use(express.static(`${__dirname}/views`));
+app.use(express.static(`${__dirname}/public`));
 // app.post("/users", (req, res) => {
 //     // Actualizar funcion
 // });

@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node ./node_project/index.js",
     "dev": "nodemon ./node_project/index.js",
-    "start-container": "docker run -p 8080:8080 -d group-15/web-app",
-    "build-container": "docker build . -t group-15/web-app"
+    "start-docker": "docker run -p 8080:8080 -d group-15/web-app",
+    "build-docker": "docker build . -t group-15/web-app"
   },
   "keywords": [
     "proyecto",
@@ -17,6 +17,10 @@
     "examenes",
     "clinicos"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rockspringa/Proyecto-Grupo-15.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
