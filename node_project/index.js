@@ -1,24 +1,35 @@
-"use strict";
-
-// const Usuario = require("model");
-// const bodyParser = require("body-parser");
 const express = require("express");
+const bodyParser = require("body-parser");
+
+// Aqui agregar modulos de la carpeta routes
+const session = require("./routes/session");
+
 const app = express();
-const port = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 
-// app.use(bodyParser.urlencoded({ extended: false })); // aun no se hace uso de json
-// app.use(bodyParser.json());
+// poniendo el middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use(express.static(`${__dirname}/views`));
 app.use(express.static(`${__dirname}/public`));
-// app.post("/users", (req, res) => {
-//     // Actualizar funcion
-// });
 
-// app.post("/users/login", (req, res) => {
-//     // Actualizar funcion
-// });
+// Aqui agregar los modulos importados en sus rutas (todos empezaran por en "/api/")
+app.use("/api/", session);
 
-app.listen(port, () =>
-    console.log("> Server is up and running on port : " + port)
+// catch 404 y pasar error al siguiente middleware (error handler)
+app.use((req, res, next) => {
+    var err = new Error("Not Found");
+    err.status = 404;
+    next(err);
+});
+
+// error handler
+app.use((err, req, res, next) => {
+  console.error(err.message, err.stack);
+  return res.status(err.status || 500).json({'message': err.message});
+});
+
+// lanzando el servidor en un puerto
+app.listen(PORT, () =>
+    console.log("> Server is up and running on port : " + PORT)
 );
