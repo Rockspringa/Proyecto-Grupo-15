@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Examen (
   nombreExamen VARCHAR(50) NOT NULL,
-  precioConjunto DECIMAL NOT NULL,
+  precioConjunto DECIMAL(5, 2) NOT NULL,
   PRIMARY KEY (nombreExamen)
 );
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS Reporte (
 CREATE TABLE IF NOT EXISTS Campo_Examen (
   nombreExamen VARCHAR(50) NOT NULL,
   nombreCampo VARCHAR(50) NOT NULL,
-  precio DECIMAL NOT NULL,
+  precio DECIMAL(5, 2) NOT NULL,
   valorNormal VARCHAR(100) NOT NULL,
   listoEn TIME NOT NULL,
   unidad VARCHAR(15) NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS Resultado_Campo (
   idReporte INT NOT NULL,
   nombreExamen VARCHAR(50) NOT NULL,
   nombreCampo VARCHAR(50) NOT NULL,
-  precio DECIMAL NOT NULL,
+  precio DECIMAL(5, 2) NOT NULL,
   estado ENUM("1", "2", "3") NOT NULL,
   resultados VARCHAR(40) NULL,
   idMedico INT NULL,
