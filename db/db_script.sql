@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS Examen (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Empleado (
   usuario VARCHAR(30) NOT NULL,
-  contrasena VARCHAR(45) NOT NULL,
+  contrasena CHAR(60) NOT NULL,
   funcion ENUM("1", "2", "3") NOT NULL,
   nombreEmpleado VARCHAR(50) NOT NULL,
   fechaNacimiento DATE NOT NULL,
-  cui INT NOT NULL,
+  cui CHAR(13) NOT NULL,
   telefonoEmpleado VARCHAR(15) NULL,
   PRIMARY KEY (usuario)
 );
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS Turno_de_Empleado (
 -- Table Paciente
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Paciente (
-  cui INT NOT NULL,
+  cui CHAR(13) NOT NULL,
   nombrePaciente VARCHAR(50) NOT NULL,
   fechaNacimiento DATE NOT NULL,
   sexo BOOLEAN NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS Paciente (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Reporte (
   idReporte INT NOT NULL AUTO_INCREMENT,
-  idPaciente INT NOT NULL,
+  idPaciente CHAR(13) NOT NULL,
   nit VARCHAR(20) NOT NULL,
   fechaEmision DATETIME NOT NULL,
   idSucursal INT NOT NULL,
@@ -186,3 +186,4 @@ CREATE TABLE IF NOT EXISTS Telefono_de_Sucursal (
     FOREIGN KEY (idSucursal)
     REFERENCES Sucursal (idSucursal)
 );
+

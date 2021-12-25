@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 
 // Aqui agregar modulos de la carpeta routes
 const examen = require("./routes/examen");
+const empleado = require("./routes/empleado");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -15,6 +16,7 @@ app.use(express.static(`${__dirname}/public`));
 
 // Aqui agregar los modulos importados en sus rutas (todos empezaran por en "/api/")
 app.use("/api/", examen);
+app.use("/api/", empleado);
 
 // catch 404 y pasar error al siguiente middleware (error handler)
 // app.use((req, res, next) => {
