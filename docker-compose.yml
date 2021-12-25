@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql_db:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=LaboratorioPatito
+      - MYSQL_USER=grupo-15
+      - MYSQL_PASSWORD=web-app
+      - MYSQL_ROOT_PASSWORD=web-app
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./db/db_script.sql:/docker-entrypoint-initdb.d/init.sql
+
+  server:
+    depends_on:
+      - mysql_db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    environment:
+      - DB_HOST=mysql_db
+      - DB_USER=grupo-15
+      - DB_PASSWORD=web-app
+      - DB_NAME=LaboratorioPatito
+      - DB_PORT=3306
+    stdin_open: true
+    tty: true
+
+volumes:
+  data-volume:

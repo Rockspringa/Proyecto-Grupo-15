@@ -3,13 +3,13 @@ const db = require("./db");
 module.exports = {
     getExamen: async (nombreExamen) => {
         const query =
-            "SELECT nombreExamen, precioConjunto FROM EXAMEN WHERE nombreExamen = ?";
+            "SELECT nombreExamen, precioConjunto FROM Examen WHERE nombreExamen = ?";
         const examen = await db.query(query, [nombreExamen]);
 
         return { examen: examen || "No se encontro el examen" };
     },
     getExamenes: async () => {
-        const query = "SELECT nombreExamen, precioConjunto FROM EXAMEN";
+        const query = "SELECT nombreExamen, precioConjunto FROM Examen";
         const examenes = await db.query(query);
 
         return { examenes: examenes || [] };
