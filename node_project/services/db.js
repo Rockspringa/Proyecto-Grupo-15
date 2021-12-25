@@ -9,21 +9,18 @@ module.exports = {
 
         return results;
     },
-    queries: async (...jsons) => {
-        const conn = await pool.getConnection();
-        await conn.query("START TRANSACTION");
+    // queries: async (...jsons) => {
+    //     const conn = await pool.getConnection();
+    //     await conn.query("START TRANSACTION");
 
-        try {
-            const resultados = jsons.map(async (json) => {
-                const [results] = await conn.query(json.sql, json.params);
-                return results;
-            });
+    //     try {
+    //         const data = jsons.map(async (json) => await conn.query(json.sql, json.params));
 
-            await conn.query("COMMIT");
-            return resultados;
-        } catch (err) {
-            await conn.query("ROLLBACK");
-            throw err;
-        }
-    },
+    //         await conn.query("COMMIT");
+    //         return data;
+    //     } catch (err) {
+    //         await conn.query("ROLLBACK");
+    //         throw err;
+    //     }
+    // },
 };
