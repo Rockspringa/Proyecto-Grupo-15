@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 // Aqui agregar modulos de la carpeta routes
-const session = require("./routes/session");
+const examen = require("./routes/examen");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -14,14 +14,14 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/public`));
 
 // Aqui agregar los modulos importados en sus rutas (todos empezaran por en "/api/")
-app.use("/api/", session);
+app.use("/api/", examen);
 
 // catch 404 y pasar error al siguiente middleware (error handler)
-app.use((req, res, next) => {
-    var err = new Error("Not Found");
-    err.status = 404;
-    next(err);
-});
+// app.use((req, res, next) => {
+//     var err = new Error("Not Found");
+//     err.status = 404;
+//     next(err);
+// });
 
 // error handler
 app.use((err, req, res, next) => {
