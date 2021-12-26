@@ -69,17 +69,18 @@ CREATE TABLE IF NOT EXISTS Sucursal (
 -- Table Turno_de_Empleado
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Turno_de_Empleado (
+  idTurnoEmpleado INT AUTO_INCREMENT,
   usuario VARCHAR(30) NOT NULL,
   idTurno INT NOT NULL,
   idSucursal INT NOT NULL,
-  PRIMARY KEY (usuario, idTurno, idSucursal),
+  PRIMARY KEY (idTurnoEmpleado),
   CONSTRAINT FK_TURNO_TURNO_EMPLEADO
     FOREIGN KEY (idTurno)
     REFERENCES Turno (idTurno),
   CONSTRAINT FK_SUCURSAL_TURNO_EMPLEADO
     FOREIGN KEY (idSucursal)
     REFERENCES Sucursal (idSucursal),
-  CONSTRAINT FK_USUARIO_TURNO_EMPLEADO
+  CONSTRAINT FK_EMPLEADO_TURNO_EMPLEADO
     FOREIGN KEY (usuario)
     REFERENCES Empleado (usuario)
 );
@@ -100,47 +101,6 @@ CREATE TABLE IF NOT EXISTS Paciente (
 
 
 -- -----------------------------------------------------
--- Table Reporte
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Reporte (
-  idReporte INT NOT NULL AUTO_INCREMENT,
-  idPaciente CHAR(13) NOT NULL,
-  nit VARCHAR(20) NOT NULL,
-  fechaEmision DATETIME NOT NULL,
-  idSucursal INT NOT NULL,
-  fechaEntregado DATETIME NULL,
-  Reportecol VARCHAR(45) NULL,
-  PRIMARY KEY (idReporte),
-  CONSTRAINT FK_CLIENTE_REPORTE
-    FOREIGN KEY (nit)
-    REFERENCES Cliente (nit),
-  CONSTRAINT FK_SUCURSAL_REPORTE
-    FOREIGN KEY (idSucursal)
-    REFERENCES Sucursal (idSucursal),
-  CONSTRAINT FK_PACIENTE_REPORTE
-    FOREIGN KEY (idPaciente)
-    REFERENCES Paciente (cui)
-);
-
-
--- -----------------------------------------------------
--- Table Campo_Examen
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Campo_Examen (
-  nombreExamen VARCHAR(50) NOT NULL,
-  nombreCampo VARCHAR(50) NOT NULL,
-  precio DECIMAL(5, 2) NOT NULL,
-  valorNormal VARCHAR(100) NOT NULL,
-  listoEn TIME NOT NULL,
-  unidad VARCHAR(15) NOT NULL,
-  PRIMARY KEY (nombreExamen, nombreCampo),
-  CONSTRAINT FK_EXAMEN_CAMPO_EXAMEN
-    FOREIGN KEY (nombreExamen)
-    REFERENCES Examen (nombreExamen)
-);
-
-
--- -----------------------------------------------------
 -- Table Medico
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Medico (
@@ -152,6 +112,51 @@ CREATE TABLE IF NOT EXISTS Medico (
 
 
 -- -----------------------------------------------------
+-- Table Reporte
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Reporte (
+  idReporte INT NOT NULL AUTO_INCREMENT,
+  idPaciente CHAR(13) NOT NULL,
+  nit VARCHAR(20) NOT NULL,
+  fechaEmision DATETIME NOT NULL,
+  idTurnoEmpleado INT NOT NULL,
+  estado ENUM("1", "2", "3") NOT NULL,
+  idMedico INT NULL,
+  fechaEntregado DATETIME NULL,
+  PRIMARY KEY (idReporte),
+  CONSTRAINT FK_CLIENTE_REPORTE
+    FOREIGN KEY (nit)
+    REFERENCES Cliente (nit),
+  CONSTRAINT FK_TURNO_EMPLEADO_REPORTE
+    FOREIGN KEY (idTurnoEmpleado)
+    REFERENCES Turno_de_Empleado (idTurnoEmpleado),
+  CONSTRAINT FK_PACIENTE_REPORTE
+    FOREIGN KEY (idPaciente)
+    REFERENCES Paciente (cui),
+  CONSTRAINT FK_MEDICO_REPORTE
+    FOREIGN KEY (idMedico)
+    REFERENCES Medico (colegiado)
+);
+
+
+-- -----------------------------------------------------
+-- Table Campo_Examen
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Campo_Examen (
+  nombreExamen VARCHAR(50) NOT NULL,
+  nombreCampo VARCHAR(50) NOT NULL,
+  precio DECIMAL(5, 2) NOT NULL,
+  valorNormal VARCHAR(100) NOT NULL,
+  listoEn INT NOT NULL,
+  unidad VARCHAR(15) NOT NULL,
+  PRIMARY KEY (nombreExamen, nombreCampo),
+  CONSTRAINT FK_EXAMEN_CAMPO_EXAMEN
+    FOREIGN KEY (nombreExamen)
+    REFERENCES Examen (nombreExamen)
+);
+
+
+-- -----------------------------------------------------
 -- Table Resultado_Campo
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Resultado_Campo (
@@ -159,16 +164,11 @@ CREATE TABLE IF NOT EXISTS Resultado_Campo (
   nombreExamen VARCHAR(50) NOT NULL,
   nombreCampo VARCHAR(50) NOT NULL,
   precio DECIMAL(5, 2) NOT NULL,
-  estado ENUM("1", "2", "3") NOT NULL,
   resultados VARCHAR(40) NULL,
-  idMedico INT NULL,
   PRIMARY KEY (idReporte, nombreExamen, nombreCampo),
   CONSTRAINT FK_CAMPO_EXAMEN_RESULTADO_CAMPO
     FOREIGN KEY (nombreExamen , nombreCampo)
     REFERENCES Campo_Examen (nombreExamen , nombreCampo),
-  CONSTRAINT FK_MEDICO_RESULTADO_CAMPO
-    FOREIGN KEY (idMedico)
-    REFERENCES Medico (colegiado),
   CONSTRAINT FK_REPORTE_RESULTADO_CAMPO
     FOREIGN KEY (idReporte)
     REFERENCES Reporte (idReporte)
@@ -186,4 +186,42 @@ CREATE TABLE IF NOT EXISTS Telefono_de_Sucursal (
     FOREIGN KEY (idSucursal)
     REFERENCES Sucursal (idSucursal)
 );
+
+
+-- -----------------------------------------------------
+-- Ingreso de informacion
+-- -----------------------------------------------------
+INSERT INTO `Paciente` (`cui`,`nombrePaciente`,`fechaNacimiento`,`sexo`)
+VALUES
+  (123,"Dylan","1999-09-28",1);
+
+INSERT INTO `Cliente` (`nit`,`nombreCliente`)
+VALUES
+  (123,"Dylan");
+
+INSERT INTO `Sucursal` (`idSucursal`,`nombreSucursal`,`ubicacionSucursal`)
+VALUES
+  (123,"Patito","calle falsa 123");
+
+INSERT INTO `Turno` (`horaInicio`,`horaSalida`)
+VALUES
+  ("07:00","13:00");
+
+INSERT INTO `Empleado` (`usuario`,`contrasena`,`funcion`,`nombreEmpleado`,`fechaNacimiento`,`cui`)
+VALUES
+  ("rocks","rocks",3,"Dylan","1999-09-28",123);
+
+INSERT INTO `Turno_de_Empleado` (`usuario`,`idTurno`,`idSucursal`)
+VALUES
+  ("rocks",1,123);
+
+INSERT INTO `Examen` (`nombreExamen`,`precioConjunto`)
+VALUES
+  ("Hematologia",73);
+
+INSERT INTO `Campo_Examen` (`nombreExamen`,`precio`,`nombreCampo`,`valorNormal`,`listoEn`,`unidad`)
+VALUES
+  ("Hematologia",12.50,"Leucocitos","mujer 34, hombre 50","48","cm3"),
+  ("Hematologia",10,"Globulos Blancos","mujer 34, hombre 50","48","cant.");
+
 

@@ -28,8 +28,11 @@ services:
       - DB_PASSWORD=web-app
       - DB_NAME=LaboratorioPatito
       - DB_PORT=3306
+    volumes:
+      - server-volume:/usr/src/app/node_modules
     stdin_open: true
     tty: true
 
 volumes:
   data-volume:
+  server-volume:

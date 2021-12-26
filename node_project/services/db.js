@@ -9,18 +9,24 @@ module.exports = {
 
         return results;
     },
-    // queries: async (...jsons) => {
-    //     const conn = await pool.getConnection();
-    //     await conn.query("START TRANSACTION");
+    queries: async (...jsons) => {
+        const conn = await pool.getConnection();
+        await conn.query("START TRANSACTION");
+        if (Array.isArray(jsons[0])) jsons = jsons[0];
 
-    //     try {
-    //         const data = jsons.map(async (json) => await conn.query(json.sql, json.params));
+        try {
+            const data = await Promise.all(
+                jsons.map(async (json) => {
+                    const [results] = await conn.query(json.sql, json.params);
+                    return results;
+                })
+            );
 
-    //         await conn.query("COMMIT");
-    //         return data;
-    //     } catch (err) {
-    //         await conn.query("ROLLBACK");
-    //         throw err;
-    //     }
-    // },
+            await conn.query("COMMIT");
+            return data;
+        } catch (err) {
+            await conn.query("ROLLBACK");
+            throw err;
+        }
+    },
 };

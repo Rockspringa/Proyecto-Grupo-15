@@ -1,0 +1,15 @@
+{
+    "login": { // dentro de login esta el formato JSON para logearse
+        "usuario": "nombre de usuario",
+        "contrasena": "sin encriptar" // notar la n en lugar de ñ
+    },
+    "sign up": { // same que login
+        "usuario": "nombre de usuario",
+        "contrasena": "sin encriptar",
+        "funcion": "1", // puede ser 1, 2 o 3
+        "nombreEmpleado": "nombre completo",
+        "fechaNacimiento": "YYYY-MM-DD",
+        "cui": "1234567891234",
+        "telefonoEmpleado": "12345678" // puede omitirse
+    }
+}

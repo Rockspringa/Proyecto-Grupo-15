@@ -1,0 +1,20 @@
+{
+    "solicitud reporte": { // dentro de solicitud reporte esta el formato JSON para solicitar un reporte
+        "nit": "123",
+        "idPaciente": "123", // es lo mismo que el cui
+        "idMedico": "123", // es lo mismo que el colegiado y si no se tiene solo no se envia el atributo
+        "idTurnoEmpleado": "123", // mandar el mismo numero siempre ya que el negocio no tiene sucursales
+        "examenes": [
+            {
+                "nombreExamen": "hematologia",
+                "campos": [
+                    "sangre",
+                    "loucocitos",
+                    "globulos blancos",
+                    "mas sangre",
+                    "aun mas sangre"
+                ]
+            }
+        ]
+    }
+}

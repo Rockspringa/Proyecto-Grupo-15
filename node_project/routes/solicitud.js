@@ -1,24 +1,20 @@
-// const express = require("express");
-// const router = express.Router();
-// const ordenExamenService = require("../services/ordenExamen");
+const express = require("express");
+const router = express.Router();
+const solicitudService = require("../services/solicitud");
 
-// // routes.get('/', );
+// routes.get('/', );
 
-// // ingresar una nueva solicitud de examenes
-// routes.post('/', async (req, res, next) => {
-//     const solicitud = req.body;
+// ingresar una nueva solicitud de examenes
+router.post("/solicitud", async (req, res, next) => {
+    try {
+        res.json(await solicitudService.addSolicitudExamen(req.body));
+    } catch (err) {
+        next(err);
+    }
+});
 
-//     if (!solicitud.idPaciente || !solicitud.idExamen || !solicitud.fechaIngreso || !solicitud.anticipo)
-//         next(new Error("Ingrese todos los datos necesarios, "))
-//     try {
+// routes.put('/', );
 
-//         res.json(await ordenExamenService.addSolicitudExamen())
-//     }
-// });
+// routes.delete('/', );
 
-// // routes.put('/', );
-
-// // routes.delete('/', );
-
-
-// module.exports = routes;
+module.exports = router;
