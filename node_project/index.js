@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const examen = require("./routes/examen");
 const empleado = require("./routes/empleado");
 const solicitud = require("./routes/solicitud");
+const reportes = require("./routes/reportes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -19,6 +20,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api/", examen);
 app.use("/api/", empleado);
 app.use("/api/", solicitud);
+app.use("/api/", reportes)
 
 // catch 404 y pasar error al siguiente middleware (error handler)
 // app.use((req, res, next) => {

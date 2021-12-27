@@ -3,7 +3,6 @@ version: '3.8'
 services:
   mysql_db:
     image: mysql
-    restart: unless-stopped
     environment:
       - MYSQL_DATABASE=LaboratorioPatito
       - MYSQL_USER=grupo-15
@@ -19,7 +18,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    restart: unless-stopped
     ports:
       - 8080:8080
     environment:
@@ -30,8 +28,7 @@ services:
       - DB_PORT=3306
     volumes:
       - server-volume:/usr/src/app/node_modules
-    stdin_open: true
-    tty: true
+      - ./node_project:/usr/src/app/node_project
 
 volumes:
   data-volume:

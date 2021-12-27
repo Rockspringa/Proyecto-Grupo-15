@@ -48,21 +48,6 @@ if (btn) {
     ]);
 }
 
-btn = document.getElementById("ingresar-resultado-btn");
-if (btn) {
-    console.log([
-        "La laboratorista debe de estar identificado.",
-        "Ya se debe de tener el archivo de los resultados de la muestra.",
-    ]);
-
-    let fileInput = document.getElementById("resultado");
-
-    document
-        .getElementById("redirect-resultado")
-        .addEventListener("click", () => {
-            fileInput.click();
-        });
-}
 
 // funcion para la pagina de registro
 btn = document.getElementById("descargar-reportes-btn");

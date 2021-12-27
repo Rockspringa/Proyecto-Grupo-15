@@ -217,11 +217,37 @@ VALUES
 
 INSERT INTO `Examen` (`nombreExamen`,`precioConjunto`)
 VALUES
-  ("Hematologia",73);
+  ("Hematologia",73),
+  ("Heces",25),
+  ("Orina",50);
 
 INSERT INTO `Campo_Examen` (`nombreExamen`,`precio`,`nombreCampo`,`valorNormal`,`listoEn`,`unidad`)
 VALUES
-  ("Hematologia",12.50,"Leucocitos","mujer 34, hombre 50","48","cm3"),
-  ("Hematologia",10,"Globulos Blancos","mujer 34, hombre 50","48","cant.");
+  ("Hematologia",12.50,"Hemoglobina","inferior 4.69, superior 6.13","48","g/dL"),
+  ("Hematologia",10,"Globulos Blancos","inferior 14.10, superior  18.10","48","miles/uL"),
+  ("Heces",5,"Consistencia","inferior 14.10, superior 18.10","48","miles/uL"),
+  ("Heces",15,"Color","","48",""),
+  ("Heces",10,"Restos Alimenticios","","48",""),
+  ("Orina",20,"Color","","48",""),
+  ("Orina",20,"Aspecto","","48",""),
+  ("Orina",20,"Olor","","48","");
+
+INSERT INTO `Reporte` (`idPaciente`,`nit`,`fechaEmision`,`idTurnoEmpleado`)
+VALUES
+  (123,123,"2021-12-28 17:00:00",1),
+  (123,123,"2021-12-28 12:00:00",1);
+
+INSERT INTO `Resultado_Campo` (`idReporte`,`nombreExamen`,`nombreCampo`,`precio`)
+VALUES
+  (1,"Hematologia","Hemoglobina",12),
+  (1,"Hematologia","Globulos Blancos",12),
+  (1,"Heces","Consistencia",12),
+  (1,"Heces","Color",12),
+  (1,"Heces","Restos Alimenticios",12),
+  (2,"Hematologia","Hemoglobina",12),
+  (2,"Hematologia","Globulos Blancos",12),
+  (2,"Orina","Color",12),
+  (2,"Orina","Aspecto",12),
+  (2,"Heces","Restos Alimenticios",12),
 
 

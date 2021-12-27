@@ -6,13 +6,13 @@ module.exports = {
             "SELECT nombreExamen, precioConjunto FROM Examen WHERE nombreExamen = ?";
         const examen = await db.query(query, [nombreExamen]);
 
-        return { examen: examen || "No se encontro el examen" };
+        return examen[0] || {};
     },
     getExamenes: async () => {
         const query = "SELECT nombreExamen, precioConjunto FROM Examen";
         const examenes = await db.query(query);
 
-        return { examenes: examenes || [] };
+        return examenes || [];
     },
     addExamen: async (data) => {
         const query = "INSERT INTO Examen SET ?";
