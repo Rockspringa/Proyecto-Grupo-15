@@ -209,7 +209,7 @@ VALUES
 
 INSERT INTO `Empleado` (`usuario`,`contrasena`,`funcion`,`nombreEmpleado`,`fechaNacimiento`,`cui`)
 VALUES
-  ("rocks","rocks",3,"Dylan","1999-09-28",123);
+  ("rocks","$2a$10$Evo3p8C9JwnbRv3iN/6j6.Dv4.jVwmqoKDrfWhsf1ocMu3g6bnM1K",3,"Dylan","1999-09-28",123);
 
 INSERT INTO `Turno_de_Empleado` (`usuario`,`idTurno`,`idSucursal`)
 VALUES
@@ -225,7 +225,7 @@ INSERT INTO `Campo_Examen` (`nombreExamen`,`precio`,`nombreCampo`,`valorNormal`,
 VALUES
   ("Hematologia",12.50,"Hemoglobina","inferior 4.69, superior 6.13","48","g/dL"),
   ("Hematologia",10,"Globulos Blancos","inferior 14.10, superior  18.10","48","miles/uL"),
-  ("Heces",5,"Consistencia","inferior 14.10, superior 18.10","48","miles/uL"),
+  ("Heces",5,"Consistencia","inferior 14.10, superior 18.10","48",""),
   ("Heces",15,"Color","","48",""),
   ("Heces",10,"Restos Alimenticios","","48",""),
   ("Orina",20,"Color","","48",""),
@@ -248,6 +248,6 @@ VALUES
   (2,"Hematologia","Globulos Blancos",12),
   (2,"Orina","Color",12),
   (2,"Orina","Aspecto",12),
-  (2,"Heces","Restos Alimenticios",12),
+  (2,"Heces","Restos Alimenticios",12);
 
 

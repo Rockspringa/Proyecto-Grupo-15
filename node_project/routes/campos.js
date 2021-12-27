@@ -12,4 +12,14 @@ router.get("/:idReporte/campos", async (req, res, next) => {
     }
 });
 
+router.put("/:idReporte/campos", async (req, res, next) => {
+    const { idReporte, examenes } = req.body;
+
+    try {
+        res.json(await resultadosService.updateResultadosDeSolicitud(idReporte, examenes));
+    } catch (err) {
+        next(err);
+    }
+});
+
 module.exports = router;

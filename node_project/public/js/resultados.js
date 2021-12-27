@@ -1,13 +1,41 @@
 const reporteSelect = document.getElementById("reporte");
 if (reporteSelect) {
-    document.getElementById("ingresar-resultado-btn").addEventListener("click", async () => {
-        if (document.querySelectorAll("input").every((input) => input.value)) {
-            const res = await fetch("/api")
-        }
-    })
+    const body = {};
+
+    document
+        .getElementById("ingresar-resultado-btn")
+        .addEventListener("click", async () => {
+            try {
+                const inputs = document.querySelectorAll("input:not(.btn)");
+                for (let input of inputs) if (!input.value) return;
+
+                const res = await fetch(
+                    `/api/reportes/${body.idReporte}/campos`,
+                    {
+                        method: "PUT",
+                        body: JSON.stringify(body),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+
+                const data = await res.json();
+                alert(data);
+            } catch (err) {
+                alert(err.message, err.status);
+            }
+        });
 
     reporteSelect.addEventListener("change", async () => {
         const examenesCol = document.getElementById("examenes");
+
+        while (examenesCol.firstChild) {
+            examenesCol.removeChild(examenesCol.firstChild);
+        }
+
+        body.idReporte = reporteSelect.value;
+        body.examenes = [];
 
         try {
             const res = await fetch(
@@ -21,11 +49,19 @@ if (reporteSelect) {
                 );
             } else {
                 const examenes = formatExams(campos);
+                let m = -1;
 
                 for (let examen of examenes) {
                     const examTitle = document.createElement("h2");
                     examTitle.classList.add("title", "text-blue", "fit-top");
                     examTitle.textContent = examen.nombreExamen;
+                    let n = -1;
+                    m++;
+
+                    const exam = {
+                        nombreExamen: examen.nombreExamen,
+                        campos: [],
+                    };
 
                     examenesCol.appendChild(examTitle);
 
@@ -33,10 +69,14 @@ if (reporteSelect) {
                         const dato = campo.nombreCampo;
                         const campoCell = document.createElement("div");
                         campoCell.classList.add("cell", "unidad");
+                        n++;
+
+                        exam.campos.push({ nombreCampo: dato });
 
                         campoCell.innerHTML = `
-                            <input type="text" name="${dato}" id="${dato}">
-                            <label for="${dato}" class="req">Resultado de ${dato}</label>`;
+                            <input onchange="addValue(this)" type="text"
+                             name="${`${m}-${n}`}" id="${`${m}-${n}`}">
+                            <label for="${`${m}-${n}`}" class="required">Resultado de ${dato}</label>`;
 
                         if (campo.unidad)
                             campoCell.innerHTML += `
@@ -45,6 +85,8 @@ if (reporteSelect) {
 
                         examenesCol.appendChild(campoCell);
                     }
+
+                    body.examenes.push(exam);
                 }
             }
         } catch (err) {
@@ -53,6 +95,11 @@ if (reporteSelect) {
     });
 
     fetchReports();
+
+    function addValue(node) {
+        const [m, n] = node.id.split("-");
+        body.examenes[m].campos[n].resultados = node.value;
+    }
 
     async function fetchReports() {
         try {

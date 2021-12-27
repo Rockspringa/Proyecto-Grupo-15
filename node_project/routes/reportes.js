@@ -28,7 +28,7 @@ router.get("/reportes/:idReporte", async (req, res, next) => {
     const { idReporte } = req.params;
 
     try {
-        const data = await resultadosService.getResultadoPorId(idReporte);
+        const data = await resultadosService.getResultadoPorIdReporte(idReporte);
 
         if (data && data.hasOwnProperty()) {
             res.json(data);

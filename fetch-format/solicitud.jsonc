@@ -16,5 +16,23 @@
                 ]
             }
         ]
+    },
+    "ingresar resultados a reporte": {
+        "idReporte": "123",
+        "examenes": [
+            {
+                "nombreExamen": "hematologia",
+                "campos": [
+                    {
+                        "nombreCampo": "sangre",
+                        "resultados": "tiene mucha"
+                    },
+                    {
+                        "nombreCampo": "leucocitos",
+                        "resultados": "no se sabe que es"
+                    }
+                ]
+            }
+        ]
     }
 }

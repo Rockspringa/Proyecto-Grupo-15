@@ -11,10 +11,11 @@
 .unidad div {
     top: 2px;
     right: 2px;
-    width: 15%;
+    width: fit-content;
     height: 90%;
     padding: auto;
     position: absolute;
+    min-width: 15%;
     font-size: small;
     text-align: center;
     border-left: 1px solid #104080;

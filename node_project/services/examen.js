@@ -25,7 +25,6 @@ module.exports = {
     updateExamen: async (nombreExamen, data) => {
         const query = "UPDATE Examen SET ? WHERE nombreExamen = ?";
         const result = await db.query(query, [data, nombreExamen]);
-        console.log(result);
 
         return result.affectedRows
             ? "Examen actualizado exitosamente."
