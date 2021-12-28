@@ -24,11 +24,19 @@ router.get("/empleado/:usuario", async (req, res, next) => {
 // login
 router.post("/empleado/login", async (req, res, next) => {
     try {
-        const coinciden = await empleadoService.login(
+        const empleado = await empleadoService.login(
             req.body.usuario,
             req.body.contrasena
         );
-        res.send(coinciden);
+        if (empleado.coinciden) {
+            if (empleado.funcion == 1)
+                res.status(301).json("/secretaria/registro-paciente.html");
+            else if (empleado.funcion == 2)
+                res.status(301).json("/laboratorista/ingresar-resultados.html");
+            else res.status(301).json("/administrador/registro-empleados.html");
+        } else {
+            res.json(empleado.coinciden);
+        }
     } catch (err) {
         next(err);
     }

@@ -82,7 +82,9 @@ CREATE TABLE IF NOT EXISTS Turno_de_Empleado (
     REFERENCES Sucursal (idSucursal),
   CONSTRAINT FK_EMPLEADO_TURNO_EMPLEADO
     FOREIGN KEY (usuario)
-    REFERENCES Empleado (usuario)
+    REFERENCES Empleado (usuario),
+  CONSTRAINT UNIQUE_TE
+    UNIQUE (usuario, idTurno, idSucursal)
 );
 
 

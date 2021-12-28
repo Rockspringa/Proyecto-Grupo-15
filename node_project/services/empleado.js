@@ -32,11 +32,11 @@ module.exports = {
         return empleado[0] || {};
     },
     login: async (usuario, contrasena) => {
-        const query = "SELECT contrasena FROM Empleado WHERE usuario = ?";
+        const query = "SELECT contrasena, funcion FROM Empleado WHERE usuario = ?";
         const user = await db.query(query, [usuario]);
         const coinciden = await bcrypt.compare(contrasena, user[0].contrasena);
 
-        return coinciden;
+        return { coinciden, funcion: user[0].funcion };
     },
     addEmpleado: async (empleado) => {
         const query = "INSERT INTO Empleado SET ?";
