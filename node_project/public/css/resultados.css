@@ -46,7 +46,7 @@ a.center-child {
 nav#admin .option {
     cursor: pointer;
     padding: 10px 0;
-    height: 100%;
+    height: 98%;
     width: 100%;
     text-align: center;
     background: linear-gradient(180deg, #d4effc 0, #ffffff 100%);
@@ -65,4 +65,39 @@ nav#admin .option.selected {
 
 nav#admin .option:hover {
     background: linear-gradient(180deg, #ddbaeb 0, #ffffff 90%);
+}
+
+.s-desnone {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    nav#admin {
+        margin-bottom: 0;
+        height: 10vh;
+        grid-template-columns: 1fr;
+    }
+
+    .s-desnone {
+        display: grid !important;
+    }
+
+    nav#admin .option {
+        border: 1px solid #ffffff 80;
+        background: #d4effc;
+        padding: 0;
+    }
+
+    nav#admin .option:not(.menu) {
+        display: none;
+    }
+
+    nav#admin .option.selected {
+        background: #ddbaeb;
+    }
+
+    nav#admin .option:hover {
+        background: #ddbaeb;
+        border: 1px solid #104080;
+    }
 }

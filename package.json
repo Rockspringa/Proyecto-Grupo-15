@@ -7,7 +7,7 @@
     "start": "node ./node_project/index.js",
     "dev": "nodemon ./node_project/index.js",
     "docdev": "nodemon -L ./node_project/index.js",
-    "start-docker": "docker run -p 8080:8080 -d group-15/web-app",
+    "start-docker": "docker run -p 8080:8080 --env-file ./.env -d group-15/web-app",
     "build-docker": "docker build . -t group-15/web-app",
     "dc-up": "docker-compose up -d --build"
   },

@@ -1,8 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS LaboratorioPatito ;
 USE LaboratorioPatito ;
 
--- CREATE USER IF NOT EXISTS 'grupo-15'@'localhost' IDENTIFIED BY 'web-app';
--- GRANT ALL PRIVILEGES ON LaboratorioPatito.* TO 'grupo-15'@'localhost' WITH GRANT OPTION;
+-- CREATE USER IF NOT EXISTS 'grupo-15'@'%' IDENTIFIED BY 'web-app';
+-- GRANT ALL PRIVILEGES ON LaboratorioPatito.* TO 'grupo-15'@'%' WITH GRANT OPTION;
 -- FLUSH PRIVILEGES;
 
 -- -----------------------------------------------------

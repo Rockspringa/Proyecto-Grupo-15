@@ -1,3 +1,36 @@
+const navbarBtn = document.querySelector("nav#admin > div");
+const navbar = document.querySelector("nav#admin");
+if (navbarBtn) {
+    let apachado = true;
+    let tamaño = 10;
+
+    navbarBtn.addEventListener("click", () => {
+        if (apachado) {
+            const interval = setInterval(() => {
+                tamaño += 2;
+                navbar.style.height = `${tamaño}vh`;
+                if (tamaño % 10 == 0 && tamaño < 60)
+                    navbar.children[tamaño / 10 - 1].style.display = "grid";
+                if (tamaño == 60) {
+                    clearInterval(interval);
+                    apachado = false
+                }
+            })
+        } else {
+            const interval = setInterval(() => {
+                tamaño -= 2;
+                navbar.style.height = `${tamaño}vh`;
+                if (tamaño % 10 == 0 && tamaño != 10)
+                navbar.children[tamaño / 10 - 1].style.display = "none";
+                if (tamaño == 10) {
+                    clearInterval(interval);
+                    apachado = true
+                }
+            })
+        }
+    })
+}
+
 const registrarEmpleado = document.getElementById("registrar-empleado-btn");
 if (registrarEmpleado) {
     registrarEmpleado.addEventListener("click", () => {
