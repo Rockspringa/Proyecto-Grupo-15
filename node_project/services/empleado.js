@@ -6,22 +6,28 @@ const saltTimes = 10;
 
 module.exports = {
     getEmpleados: async () => {
-        const query = "SELECT usuario, funcion, nombreEmpleado, fechaNacimiento,"
-            + " cui, telefonoEmpleado FROM Empleado";
-        
+        const query =
+            "SELECT usuario, funcion, nombreEmpleado, fechaNacimiento, cui, " +
+            "telefonoEmpleado FROM Empleado WHERE contrasena != 'no encriptado'";
+
         const empleados = await db.query(query);
 
         for (let empleado of empleados)
-            empleado.fechaNacimiento = moment(empleado.fechaNacimiento).format("YYYY-MM-DD");
+            empleado.fechaNacimiento = moment(empleado.fechaNacimiento).format(
+                "YYYY-MM-DD"
+            );
 
         return empleados || [];
     },
     getEmpleado: async (usuario) => {
-        const query = "SELECT usuario, funcion, nombreEmpleado, fechaNacimiento,"
-            + " cui, telefonoEmpleado FROM Empleado WHERE usuario = ?";
-        
+        const query =
+            "SELECT usuario, funcion, nombreEmpleado, fechaNacimiento," +
+            " cui, telefonoEmpleado FROM Empleado WHERE usuario = ?";
+
         const empleado = await db.query(query, [usuario]);
-        empleado[0].fechaNacimiento = moment(empleado[0].fechaNacimiento).format("YYYY-MM-DD");
+        empleado[0].fechaNacimiento = moment(
+            empleado[0].fechaNacimiento
+        ).format("YYYY-MM-DD");
 
         return empleado[0] || {};
     },
@@ -59,7 +65,8 @@ module.exports = {
             : "No se pudo actualizar al empleado.";
     },
     deleteEmpleado: async (usuario) => {
-        const query = "UPDATE Empleado SET contrasena = 'no encriptado' WHERE usuario = ?";
+        const query =
+            "UPDATE Empleado SET contrasena = 'no encriptado' WHERE usuario = ?";
 
         const results = await db.query(query, [usuario]);
 

@@ -1,6 +1,6 @@
 const registrarEmpleado = document.getElementById("registrar-empleado-btn");
 if (registrarEmpleado) {
-    registrarEmpleado.addEventListener("click", async () => {
+    registrarEmpleado.addEventListener("click", () => {
         const contrasena = document.getElementById("contraseña").value;
         const repeat = document.getElementById("repeat").value;
 
@@ -34,49 +34,60 @@ if (registrarEmpleado) {
         };
 
         if (telefonoEmpleado) body.telefonoEmpleado = telefonoEmpleado;
-
-        try {
-            const res = await fetch("/api/empleado", {
-                method: "POST",
-                body: JSON.stringify(body),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            alert(await res.text());
-
-            const inputs = document.querySelectorAll("input:not(.btn)");
-            for (let input of inputs) input.value = "";
-        } catch (err) {
-            alert(err.message, err.status);
-        }
+        fetchEmpleados("POST", body);
     });
 }
 
 const modificarEmpleado = document.getElementById("modificar-empleado-btn");
 if (modificarEmpleado) {
-    modificarEmpleado.addEventListener("click", async () => {
+    const selectUsuario = document.getElementById("usuario");
+    const cuiInput = document.getElementById("cui");
+    const funcionInput = document.getElementById("funcion");
+    const usuarioInput = document.getElementById("usuario");
+    const nombreInput = document.getElementById("nombre");
+    const fechaInput = document.getElementById("fecha");
+    const telefonoInput = document.getElementById("telefono");
+
+    getEmpleados();
+
+    selectUsuario.addEventListener("change", async () => {
+        try {
+            const res = await fetch(`/api/empleado/${selectUsuario.value}`);
+            const empleado = await res.json();
+
+            cuiInput.value = empleado.cui;
+            funcionInput.value = empleado.funcion;
+            usuarioInput.value = empleado.usuario;
+            nombreInput.value = empleado.nombreEmpleado;
+            fechaInput.value = empleado.fechaNacimiento;
+            telefonoInput.value = empleado.telefonoEmpleado || "";
+
+            cuiInput.disabled = false;
+            funcionInput.disabled = false;
+            usuarioInput.disabled = false;
+            nombreInput.disabled = false;
+            fechaInput.disabled = false;
+            telefonoInput.disabled = false;
+        } catch (err) {
+            alert(err.message, err.status);
+        }
+    });
+
+    modificarEmpleado.addEventListener("click", () => {
         const contrasena = document.getElementById("contraseña").value;
         const repeat = document.getElementById("repeat").value;
 
-        if (!contrasena || contrasena !== repeat)
-            return alert("Llene todos los campos obligatorios.");
+        if (contrasena && contrasena !== repeat)
+            return alert("Las contraseñas no coinciden.");
 
-        const cui = document.getElementById("cui").value;
-        const funcion = document.getElementById("funcion").value;
-        const usuario = document.getElementById("usuario").value;
-        const nombreEmpleado = document.getElementById("nombre").value;
-        const fechaNacimiento = document.getElementById("fecha").value;
-        const telefonoEmpleado = document.getElementById("telefono").value;
+        const cui = cuiInput.value;
+        const funcion = funcionInput.value;
+        const usuario = usuarioInput.value;
+        const nombreEmpleado = nombreInput.value;
+        const fechaNacimiento = fechaInput.value;
+        const telefonoEmpleado = telefonoInput.value;
 
-        if (
-            !cui ||
-            !funcion ||
-            !usuario ||
-            !nombreEmpleado ||
-            !fechaNacimiento
-        )
+        if (!cui || !funcion || !usuario || !nombreEmpleado || !fechaNacimiento)
             return alert("Llene todos los campos obligatorios.");
 
         const body = {
@@ -89,10 +100,13 @@ if (modificarEmpleado) {
         };
 
         if (telefonoEmpleado) body.telefonoEmpleado = telefonoEmpleado;
+        fetchEmpleados("PUT", body, `/${selectUsuario.value}`);
+    });
 
+    async function fetchEmpleados(method, body, uri = "") {
         try {
-            const res = await fetch("/api/empleado", {
-                method: "POST",
+            const res = await fetch(`/api/empleado${uri}`, {
+                method: method,
                 body: JSON.stringify(body),
                 headers: {
                     "Content-Type": "application/json",
@@ -106,5 +120,50 @@ if (modificarEmpleado) {
         } catch (err) {
             alert(err.message, err.status);
         }
+    }
+
+    async function getEmpleados() {
+        const res = await fetch("/api/empleado");
+        const empleados = await res.json();
+
+        for (let empleado of empleados) {
+            const opt = document.createElement("option");
+            opt.value = empleado.usuario;
+            opt.textContent = empleado.usuario;
+
+            selectUsuario.appendChild(opt);
+        }
+    }
+}
+
+const eliminarEmpleado = document.getElementById("eliminar-empleado-btn");
+if (eliminarEmpleado) {
+    const selectUsuario = document.getElementById("usuario");
+
+    getEmpleados();
+
+    eliminarEmpleado.addEventListener("click", async () => {
+        try {
+            const res = await fetch(`/api/empleado/${selectUsuario.value}`, {
+                method: "DELETE",
+            });
+
+            alert(await res.text());
+        } catch (err) {
+            alert(err.message, err.status);
+        }
     });
+
+    async function getEmpleados() {
+        const res = await fetch("/api/empleado");
+        const empleados = await res.json();
+
+        for (let empleado of empleados) {
+            const opt = document.createElement("option");
+            opt.value = empleado.usuario;
+            opt.textContent = empleado.usuario;
+
+            selectUsuario.appendChild(opt);
+        }
+    }
 }
