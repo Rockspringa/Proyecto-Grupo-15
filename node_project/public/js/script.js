@@ -30,39 +30,10 @@ document.querySelectorAll(".col .cell, .double-col .cell").forEach((row) => {
     });
 });
 
-// funcion para la pagina de registro
-let btn = document.getElementById("sign-up-btn");
-if (btn) {
-    console.log([
-        "No debe de existir el usuario que se creara.",
-        "El administrador debe de haberse identificado con anterioridad",
-    ]);
-}
-
-btn = document.getElementById("solicitar-btn");
-if (btn) {
-    console.log([
-        "La secretaria debe de estar identificada.",
-        "El usuario debe de haberse registrado con anterioridad.",
-        "El paciente ya tiene sus muestras",
-    ]);
-}
-
-
-// funcion para la pagina de registro
-btn = document.getElementById("descargar-reportes-btn");
-if (btn) {
-    console.log(["El administrador debe de estar identificado."]);
-}
 
 // funcion para la pagina de registro
 btn = document.getElementById("ingresar-paciente-btn");
 if (btn) {
-    console.log([
-        "La secretaria debe de estar identificada.",
-        "El usuario no debe de existir.",
-    ]);
-
     document.getElementById("ref-bool").addEventListener("change", (event) => {
         let input = document.getElementById("referido");
         let label = document.querySelector("#referido + label");
@@ -79,16 +50,6 @@ if (btn) {
         }
     });
 }
-
-// funcion para la pagina de login
-// btn = document.getElementById("login-btn");
-// if (btn) {
-//     este no es un caso de uso pero es indispensable para la seguridad
-//     console.log([
-//         "El usuario a ingresar debe de existir en el sistema.",
-//         "No debe de estar ningun usuario identificado en el dispositivo desde el cual ingresa",
-//     ]);
-// }
 
 let addBtn = document.querySelector("#add-btn .btn");
 if (addBtn) {

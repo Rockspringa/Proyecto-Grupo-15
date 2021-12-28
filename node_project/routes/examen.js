@@ -30,7 +30,7 @@ router.get("/examenes/:nombreExamen", async (req, res, next) => {
     }
 });
 
-// ruta para eliminar un tipo de examen por su nombre
+// ruta para modificar un tipo de examen por su nombre
 router.put("/examenes/:nombreExamen", async (req, res, next) => {
     try {
         res.json(await examenService.updateExamen(req.params.nombreExamen, req.body));
