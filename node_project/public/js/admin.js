@@ -2,27 +2,27 @@ const navbarBtn = document.querySelector("nav#admin > div");
 const navbar = document.querySelector("nav#admin");
 if (navbarBtn) {
     let apachado = true;
-    let tamaño = 10;
+    let tamaño = 40;
 
     navbarBtn.addEventListener("click", () => {
         if (apachado) {
             const interval = setInterval(() => {
-                tamaño += 2;
-                navbar.style.height = `${tamaño}vh`;
-                if (tamaño % 10 == 0 && tamaño < 60)
-                    navbar.children[tamaño / 10 - 1].style.display = "grid";
-                if (tamaño == 60) {
+                tamaño += 5;
+                navbar.style.height = `${tamaño}px`;
+                if (tamaño % 40 == 0)
+                    navbar.children[tamaño / 40 - 1].style.display = "grid";
+                if (tamaño == 200) {
                     clearInterval(interval);
                     apachado = false
                 }
             })
         } else {
             const interval = setInterval(() => {
-                tamaño -= 2;
-                navbar.style.height = `${tamaño}vh`;
-                if (tamaño % 10 == 0 && tamaño != 10)
-                navbar.children[tamaño / 10 - 1].style.display = "none";
-                if (tamaño == 10) {
+                tamaño -= 5;
+                navbar.style.height = `${tamaño}px`;
+                if (tamaño % 40 == 0 && tamaño)
+                navbar.children[tamaño / 40].style.display = "none";
+                if (tamaño == 40) {
                     clearInterval(interval);
                     apachado = true
                 }
