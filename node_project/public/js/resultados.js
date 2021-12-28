@@ -22,6 +22,9 @@ if (reporteSelect) {
 
                 const data = await res.json();
                 alert(data);
+                
+                const inputs = document.querySelectorAll("input:not(.btn)");
+                for (let input of inputs) input.value = "";
             } catch (err) {
                 alert(err.message, err.status);
             }

@@ -1,0 +1,55 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empleados</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/resultados.css">
+</head>
+
+<body>
+    <nav id="admin">
+        <a href="./registro-empleados.html" class="center-child fill text-blue option">
+            <span>Registrar Empleado</span>
+        </a>
+        <a href="./modificar-empleado.html" class="center-child fill text-blue option">
+            <span>Modificar Empleado</span>
+        </a>
+        <a href="./eliminar-empleado.html" class="center-child fill text-blue option selected">
+            <span>Eliminar Empleado</span>
+        </a>
+        <a href="./descargar-reportes.html" class="center-child fill text-blue option">
+            <span>Descargar Reportes</span>
+        </a>
+    </nav>
+
+    <div class="center-child">
+        <div class="card s-card">
+            <h1 class="title text-blue">Despedir Empleado</h1>
+
+            <hr>
+
+            <form class="col">
+                <div class="col">
+                    <div class="cell">
+                        <select name="usuario" id="usuario">
+                            <option value="" disabled selected>Usuarios registrados</option>
+                        </select>
+                        <label for="usuario" class="required">Usuario</label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <input type="button" id="sign-up-btn" class="btn primary-btn print" value="Registrar Empleado">
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
