@@ -1,0 +1,45 @@
+<!DOCTYPE html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Medico</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="center-child">
+        <div class="card s-card">
+            <h1 class="title text-blue">Nuevo Medico De Referidos</h1>
+
+            <hr>
+
+            <form class="col">
+                <div class="cell">
+                    <input type="number" name="colegiado" id="colegiado" required>
+                    <label for="colegiado" class="required">Colegiado</label>
+                </div>
+
+                <div class="cell">
+                    <input type="text" name="nombre" id="nombre" required>
+                    <label for="nombre" class="required">Nombre del medico</label>
+                </div>
+
+                <div class="cell">
+                    <input type="text" name="direccion" id="direccion" required>
+                    <label for="direccion">Direccion</label>
+                </div>
+
+                <hr>
+
+                <input type="button" id="medico-btn" class="btn primary-btn" value="Agregar Medico">
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/medico.js"></script>
+</body>
+
+</html>

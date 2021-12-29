@@ -6,6 +6,7 @@ const examen = require("./routes/examen");
 const empleado = require("./routes/empleado");
 const solicitud = require("./routes/solicitud");
 const reportes = require("./routes/reportes");
+const medico = require("./routes/medico");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
